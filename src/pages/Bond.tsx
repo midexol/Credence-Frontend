@@ -2,6 +2,7 @@ import Banner from '../components/Banner'
 import Disclaimer from '../components/Disclaimer'
 import { useToast } from '../components/ToastProvider'
 import Badge from '../components/Badge'
+import Button from '../components/Button'
 
 export default function Bond() {
   const { addToast } = useToast()
@@ -58,22 +59,14 @@ export default function Bond() {
               color: 'var(--text-primary)',
             }}
           />
-          <button
+          <Button
             type="button"
             onClick={handleCreate}
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              background: 'var(--color-primary)',
-              color: 'var(--bg-page)',
-              border: 'none',
-              borderRadius: '8px',
-              fontWeight: 600,
-              cursor: 'pointer',
-            }}
+            variant="primary"
+            fullWidth
           >
             Create bond
-          </button>
+          </Button>
         </div>
 
         <div
