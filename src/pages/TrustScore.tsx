@@ -3,6 +3,7 @@ import Disclaimer from '../components/Disclaimer'
 import { useToast } from '../components/ToastProvider'
 import Badge from '../components/Badge'
 import Button from '../components/Button'
+import TierLadder from '../components/TierLadder'
 
 export default function TrustScore() {
   const { addToast } = useToast()
@@ -33,6 +34,7 @@ export default function TrustScore() {
       <p id="trust-desc" style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
         Your reputation score is computed from bond amount, duration, and attestations.
       </p>
+      <TierLadder />
       <Banner severity="info">
         Scores update once per epoch. Recent bond changes may not be reflected immediately.
       </Banner>
