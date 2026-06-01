@@ -1,11 +1,15 @@
+import { useState } from 'react'
 import Banner from '../components/Banner'
 import Disclaimer from '../components/Disclaimer'
 import { useToast } from '../components/ToastProvider'
 import Badge from '../components/Badge'
 import Button from '../components/Button'
+import AddressInput from '../components/AddressInput'
 
 export default function TrustScore() {
   const { addToast } = useToast()
+  const [address, setAddress] = useState('')
+  const [isAddressValid, setIsAddressValid] = useState(false)
 
   const handleLookup = () => {
     addToast('success', 'Trust score retrieved.')
@@ -55,29 +59,21 @@ export default function TrustScore() {
           }}
         >
           <h2 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>Lookup Identity</h2>
-          <label
-            htmlFor="wallet-address"
-            style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}
-          >
-            Identity / Wallet address
-          </label>
-          <input
+          <AddressInput
             id="wallet-address"
-            type="text"
-            placeholder="G..."
-            aria-describedby="trust-desc"
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              border: '1px solid var(--border-default)',
-              borderRadius: '8px',
-              fontSize: '1rem',
-              marginBottom: '1rem',
-              background: 'var(--bg-page)',
-              color: 'var(--text-primary)',
-            }}
+            label="Stellar Address"
+            value={address}
+            onChange={setAddress}
+            onValidationChange={setIsAddressValid}
           />
-          <Button type="button" onClick={handleLookup} variant="primary" fullWidth>
+          <Button
+            type="button"
+            onClick={handleLookup}
+            variant="primary"
+            fullWidth
+            disabled={!isAddressValid}
+            style={{ marginTop: '1rem' }}
+          >
             Look up score
           </Button>
         </div>

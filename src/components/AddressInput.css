@@ -1,0 +1,226 @@
+/**
+ * AddressInput: Stellar address input with paste, validation, and visual feedback
+ * States: empty, focused, valid, invalid, error, success
+ */
+
+.address-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--credence-space-3);
+}
+
+.address-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--credence-space-2);
+  padding: var(--credence-space-3);
+  background: var(--credence-surface-card);
+  border: 1px solid var(--credence-border-default);
+  border-radius: var(--credence-radius-lg);
+  transition:
+    border-color var(--credence-motion-duration-base) var(--credence-motion-easing-standard),
+    background-color var(--credence-motion-duration-base) var(--credence-motion-easing-standard),
+    box-shadow var(--credence-motion-duration-base) var(--credence-motion-easing-standard);
+}
+
+.address-input-container--focused {
+  border-color: var(--credence-color-primary);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+}
+
+.address-input-container--error {
+  border-color: var(--credence-color-danger-border);
+  background: var(--credence-color-danger-surface);
+}
+
+.address-input-container--error.address-input-container--focused {
+  border-color: var(--credence-color-danger-border);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.address-input-container--success {
+  border-color: var(--credence-color-success-border);
+  background: var(--credence-color-success-surface);
+}
+
+.address-input-container--success.address-input-container--focused {
+  border-color: var(--credence-color-success-border);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.address-input-field {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  color: var(--credence-text-primary);
+  font-family: monospace;
+  font-size: var(--credence-font-size-base);
+  font-weight: var(--credence-font-weight-regular);
+  line-height: var(--credence-line-height-base);
+  padding: 0;
+  outline: none;
+}
+
+.address-input-field::placeholder {
+  color: var(--credence-text-secondary);
+}
+
+.address-input-field:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.address-input-paste-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--credence-border-default);
+  border-radius: var(--credence-radius-md);
+  color: var(--credence-text-secondary);
+  cursor: pointer;
+  transition:
+    background-color var(--credence-motion-duration-base) var(--credence-motion-easing-standard),
+    border-color var(--credence-motion-duration-base) var(--credence-motion-easing-standard),
+    color var(--credence-motion-duration-base) var(--credence-motion-easing-standard);
+  flex-shrink: 0;
+}
+
+.address-input-paste-button:hover:not(:disabled) {
+  background: var(--credence-color-slate-50);
+  border-color: var(--credence-text-secondary);
+  color: var(--credence-text-primary);
+}
+
+.address-input-paste-button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.address-input-paste-button:focus-visible {
+  outline: var(--credence-focus-ring);
+  outline-offset: 2px;
+}
+
+.address-input-paste-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+[data-theme='dark'] .address-input-paste-button {
+  border-color: var(--credence-color-slate-700);
+}
+
+[data-theme='dark'] .address-input-paste-button:hover:not(:disabled) {
+  background: var(--credence-color-slate-700);
+  border-color: var(--credence-color-slate-600);
+}
+
+/**
+ * Echo display: shows recognized address when valid
+ * Uses monospace font for clarity
+ */
+.address-input-echo {
+  display: flex;
+  align-items: baseline;
+  gap: var(--credence-space-2);
+  padding: var(--credence-space-2) var(--credence-space-3);
+  background: var(--credence-color-success-surface);
+  border: 1px solid var(--credence-color-success-border);
+  border-radius: var(--credence-radius-md);
+  font-size: var(--credence-font-size-sm);
+}
+
+.address-input-echo-label {
+  color: var(--credence-color-success-text);
+  font-weight: var(--credence-font-weight-semibold);
+  flex-shrink: 0;
+}
+
+.address-input-echo-value {
+  color: var(--credence-color-success-text);
+  font-family: monospace;
+  font-size: var(--credence-font-size-sm);
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+  word-break: break-all;
+}
+
+[data-theme='dark'] .address-input-echo {
+  background: var(--credence-color-success-surface);
+}
+
+/**
+ * Character count: displays progress toward 56-char requirement
+ */
+.address-input-count {
+  font-size: var(--credence-font-size-xs);
+  color: var(--credence-text-secondary);
+  text-align: right;
+}
+
+/**
+ * Form field wrapper styles (if not already defined)
+ */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--credence-space-2);
+}
+
+.form-field > label {
+  font-weight: var(--credence-font-weight-semibold);
+  font-size: var(--credence-font-size-base);
+  color: var(--credence-text-primary);
+}
+
+.form-hint {
+  font-size: var(--credence-font-size-sm);
+  color: var(--credence-text-secondary);
+  margin-top: -var(--credence-space-1);
+}
+
+.form-error {
+  font-size: var(--credence-font-size-sm);
+  color: var(--credence-color-danger-text);
+  margin-top: -var(--credence-space-1);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--credence-space-1);
+}
+
+/**
+ * Responsive adjustments for smaller screens
+ */
+@media (max-width: 480px) {
+  .address-input-container {
+    gap: var(--credence-space-1);
+    padding: var(--credence-space-2);
+  }
+
+  .address-input-field {
+    font-size: var(--credence-font-size-sm);
+  }
+
+  .address-input-paste-button {
+    width: 28px;
+    height: 28px;
+  }
+
+  .address-input-echo {
+    flex-direction: column;
+    gap: var(--credence-space-1);
+  }
+
+  .address-input-echo-label,
+  .address-input-echo-value {
+    display: block;
+    width: 100%;
+  }
+}
