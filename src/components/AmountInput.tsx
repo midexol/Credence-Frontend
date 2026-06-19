@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+﻿import { useMemo, useState } from 'react'
 import './AmountInput.css'
 
 type NativeInputProps = Omit<
@@ -152,4 +152,3 @@ export default function AmountInput({
     </div>
   )
 }
-
