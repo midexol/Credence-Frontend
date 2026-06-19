@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Bond from './pages/Bond'
 import TrustScore from './pages/TrustScore'
 import AmountInputTestPage from './pages/AmountInputTestPage'
+import FocusTrapTestPage from './pages/FocusTrapTestPage'
 import NotFound from './pages/NotFound'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="bond" element={<Bond />} />
             <Route path="trust" element={<TrustScore />} />
             <Route path="test-amount-input" element={<AmountInputTestPage />} />
+            <Route path="test-focus-trap" element={<FocusTrapTestPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
