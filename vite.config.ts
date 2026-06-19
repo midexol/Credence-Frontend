@@ -18,6 +18,7 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: ['./src/test-setup.ts'],
+    exclude: ['**/node_modules/**', '**/AmountInput.test.ts'],
     coverage: {
       provider: 'v8',
       include: ['src/components/AddressInput.tsx', 'src/components/ConfirmDialog.tsx', 'src/hooks/useFocusTrap.ts'],

@@ -110,7 +110,7 @@ runTests()
 
 // Export for manual testing in browser console
 if (typeof window !== 'undefined') {
-  (window as any).testAmountInput = {
+  (window as unknown as Record<string, unknown>).testAmountInput = {
     sanitizeUSDCInput,
     formatUSDC,
     normalizeUSDC,
