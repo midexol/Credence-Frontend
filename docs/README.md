@@ -37,7 +37,13 @@ This directory contains comprehensive design specifications and implementation g
    - Accessibility guidelines
    - Performance considerations
 
-6. **[Mobile Navigation Pattern](./mobile-navigation-pattern.md)** ⭐ NEW
+6. **[Testing Guide](./TESTING.md)**
+   - Vitest and React Testing Library commands
+   - Shared setup conventions and import alias guidance
+   - Mocking patterns for browser APIs
+   - Coverage expectations and contributor checklist
+
+7. **[Mobile Navigation Pattern](./mobile-navigation-pattern.md)** ⭐ NEW
    - Hybrid responsive navigation (hamburger mobile + horizontal desktop)
    - Complete implementation guide with code examples
    - Accessibility requirements (WCAG 2.1 AA)
