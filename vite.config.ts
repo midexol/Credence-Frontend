@@ -30,6 +30,7 @@ export default defineConfig({
         'src/hooks/useDocumentTitle.ts',
         'src/context/SettingsContext.tsx',
         'src/components/ToastProvider.tsx',
+        'src/components/TrustGauge.tsx',
       ],
       reporter: ['text', 'lcov'],
       thresholds: {
@@ -40,6 +41,7 @@ export default defineConfig({
         'src/hooks/useDocumentTitle.ts': { lines: 90, branches: 90 },
         'src/context/SettingsContext.tsx': { lines: 80, branches: 80 },
         'src/components/ToastProvider.tsx': { lines: 80, branches: 80 },
+        'src/components/TrustGauge.tsx': { lines: 90, branches: 90 },
       },
     },
   },
