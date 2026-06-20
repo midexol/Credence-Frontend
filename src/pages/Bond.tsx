@@ -19,9 +19,7 @@ interface MockBond {
   status: BondStatus
 }
 
-function formatUsdc(amount: number): string {
-  return `${amount.toLocaleString('en-US', { maximumFractionDigits: 2 })} USDC`
-}
+// formatUsdc is imported from src/lib/format.ts — do not redeclare here.
 
 function getPenaltyRate(status: BondStatus): number {
   switch (status) {
