@@ -7,7 +7,7 @@ const defaults = {
   docs: '/docs',
   terms: '/legal/terms',
   privacy: '/legal/privacy',
-} as const
+} as const;
 
 const getLink = (primaryEnv: string | undefined, legacyEnv: string | undefined, defaultPath: string): string => {
   const trimAndValidate = (value: string | undefined): string | undefined => {
@@ -26,8 +26,8 @@ export const LINKS = {
   docs: envDocs || defaults.docs,
   terms: envTerms || defaults.terms,
   privacy: envPrivacy || defaults.privacy,
-} as const
+} as const;
 
-export type Links = typeof LINKS
+export type Links = typeof LINKS;
 
-export default LINKS
+export default LINKS;
